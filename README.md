@@ -1,3 +1,3 @@
 ## وضعیت استقرار
 
-استقرار روی GitHub Pages در حال آماده‌سازی است.
+استقرار GitHub Pages با GitHub Actions انجام می‌شود.
