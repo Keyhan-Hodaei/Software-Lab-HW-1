@@ -513,3 +513,20 @@ details p {
     font-size: 1.35rem;
   }
 }
+
+/* Fix for the command blocks */
+.conflict-card pre {
+    background-color: #f1f5f9;    /* Light gray background */
+    padding: 1rem;
+    border-radius: 0.75rem;
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+}
+
+.conflict-card pre code {
+    color: #0f172a;               /* Dark slate color - VERY readable */
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.9rem;
+    background: transparent;      /* Inherits from <pre> */
+    padding: 0;
+}
