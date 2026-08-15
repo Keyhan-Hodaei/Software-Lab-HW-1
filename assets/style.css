@@ -40,3 +40,19 @@ footer {
   padding: 25px 0;
   text-align: center;
 }
+
+pre,
+code {
+  direction: ltr;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  section {
+    padding: 16px;
+  }
+
+  .site-header {
+    padding: 25px 0;
+  }
+}
