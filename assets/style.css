@@ -40,3 +40,13 @@ footer {
   padding: 25px 0;
   text-align: center;
 }
+
+html,
+body {
+  font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
+}
+
+body {
+  direction: rtl;
+  text-align: right;
+}
