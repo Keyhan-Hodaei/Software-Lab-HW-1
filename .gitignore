@@ -1,0 +1,20 @@
+# سیستم‌عامل
+.DS_Store
+Thumbs.db
+
+# ویرایشگرها
+.vscode/
+.idea/
+
+# فایل‌های موقت
+*.tmp
+*.swp
+*.log
+
+# خروجی‌های build احتمالی
+dist/
+build/
+
+# فایل‌های محیطی
+.env
+.env.*
