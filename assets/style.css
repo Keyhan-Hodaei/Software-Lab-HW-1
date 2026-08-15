@@ -64,3 +64,17 @@ body {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
+
+@media (max-width: 760px) {
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    width: min(100% - 20px, 1100px);
+  }
+
+  h1 {
+    font-size: 1.7rem;
+  }
+}
