@@ -3,203 +3,404 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="گزارش فارسی آزمایش Git، GitHub، GitHub Actions و GitHub Pages">
   <title>گزارش آزمایش Git و GitHub</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
   <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
   <header class="site-header">
-    <div class="container">
-      <h1>گزارش آزمایش Git و GitHub</h1>
-      <p>فرانت‌اند ایستا با قابلیت استقرار خودکار روی GitHub Pages</p>
+    <div class="container hero">
+      <div>
+        <span class="eyebrow">آزمایش مهندسی نرم‌افزار</span>
+        <h1>گزارش آزمایش Git، GitHub و GitHub Pages</h1>
+        <p class="hero-text">
+          یک frontend ایستای فارسی و راست‌به‌چپ که فرآیند توسعه، شاخه‌بندی،
+          commit، رفع conflict و استقرار خودکار را مستندسازی می‌کند.
+        </p>
+      </div>
+
+      <div class="hero-badge" aria-label="وضعیت پروژه">
+        <strong>وضعیت</strong>
+        <span>آماده‌ی استقرار</span>
+      </div>
     </div>
   </header>
 
   <main class="container">
-    <section id="intro">
-      <h2>مقدمه</h2>
-      <p>
-        این صفحه گزارش مرحله‌به‌مرحله‌ی فرایند توسعه، مدیریت نسخه،
-        شاخه‌بندی، رفع تعارض و استقرار خودکار یک نرم‌افزار ایستاست.
-      </p>
+    <nav class="toc" aria-label="فهرست گزارش">
+      <a href="#overview">معرفی</a>
+      <a href="#workflow">فرآیند</a>
+      <a href="#branches">شاخه‌ها</a>
+      <a href="#commits">Commitها</a>
+      <a href="#conflicts">Conflictها</a>
+      <a href="#deployment">استقرار</a>
+      <a href="#questions">پرسش‌های نظری</a>
+    </nav>
+
+    <section id="overview" class="section">
+      <div class="section-heading">
+        <span class="section-number">۰۱</span>
+        <div>
+          <p class="section-kicker">معرفی پروژه</p>
+          <h2>هدف و فناوری‌ها</h2>
+        </div>
+      </div>
+
+      <div class="report-grid">
+        <article class="card">
+          <h3>هدف آزمایش</h3>
+          <p>
+            هدف پروژه تمرین عملی مدیریت نسخه با Git، همکاری در GitHub،
+            شاخه‌بندی، Pull Request، رفع تعارض و استقرار خودکار یک
+            نرم‌افزار static روی GitHub Pages است.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>فناوری‌ها</h3>
+          <p>
+            HTML5، CSS3، JavaScript خام، Git، GitHub، GitHub Actions
+            و GitHub Pages. پروژه بدون build system پیچیده اجرا می‌شود.
+          </p>
+        </article>
+      </div>
     </section>
 
-    <section id="status">
-      <h2>وضعیت پروژه</h2>
-      <p>نسخه‌ی اولیه پروژه آماده شده است.</p>
+    <section id="workflow" class="section">
+      <div class="section-heading">
+        <span class="section-number">۰۲</span>
+        <div>
+          <p class="section-kicker">فرآیند توسعه</p>
+          <h2>از working tree تا GitHub Pages</h2>
+        </div>
+      </div>
+
+      <div class="flow">
+        <div class="flow-step">
+          <span>۱</span>
+          <div>
+            <strong>Working Tree</strong>
+            <p>فایل‌های قابل ویرایش پروژه.</p>
+          </div>
+        </div>
+
+        <div class="flow-arrow">←</div>
+
+        <div class="flow-step">
+          <span>۲</span>
+          <div>
+            <strong>Staging Area</strong>
+            <p>فایل‌های انتخاب‌شده با <code>git add</code>.</p>
+          </div>
+        </div>
+
+        <div class="flow-arrow">←</div>
+
+        <div class="flow-step">
+          <span>۳</span>
+          <div>
+            <strong>Commit</strong>
+            <p>ثبت یک تغییر منطقی و قابل بازبینی.</p>
+          </div>
+        </div>
+
+        <div class="flow-arrow">←</div>
+
+        <div class="flow-step">
+          <span>۴</span>
+          <div>
+            <strong>Pull Request</strong>
+            <p>بازبینی و ادغام کنترل‌شده.</p>
+          </div>
+        </div>
+
+        <div class="flow-arrow">←</div>
+
+        <div class="flow-step">
+          <span>۵</span>
+          <div>
+            <strong>GitHub Pages</strong>
+            <p>انتشار خودکار سایت.</p>
+          </div>
+        </div>
+      </div>
     </section>
-    <section id="introduction">
-        <h2>مقدمه آزمایش</h2>
 
-        <p>
-            هدف این آزمایش آشنایی عملی با Git، GitHub، branch،
-            commit، merge، rebase، conflict، pull request و GitHub Actions است.
-        </p>
+    <section id="branches" class="section">
+      <div class="section-heading">
+        <span class="section-number">۰۳</span>
+        <div>
+          <p class="section-kicker">Branching Strategy</p>
+          <h2>ساختار شاخه‌ها</h2>
+        </div>
+      </div>
 
-        <p>
-            پروژه به‌صورت یک frontend ایستا پیاده‌سازی شده و همین صفحه
-            نقش گزارش آزمایش را نیز ایفا می‌کند.
-        </p>
+      <div class="branch-tree" aria-label="نمودار شاخه‌ها">
+        <div class="tree-main">
+          <span class="tree-node main-node">main</span>
+          <div class="tree-line"></div>
+          <span class="tree-node dev-node">develop</span>
+        </div>
+
+        <div class="tree-features">
+          <span class="tree-node">feature/git-theory</span>
+          <span class="tree-node">feature/report-styling</span>
+          <span class="tree-node">feature/conflict-lab</span>
+          <span class="tree-node">feature/deployment</span>
+          <span class="tree-node">hotfix/mobile-layout</span>
+        </div>
+      </div>
+
+      <div class="report-grid">
+        <article class="card">
+          <h3>main</h3>
+          <p>نسخه‌ی پایدار پروژه است و فقط از طریق Pull Request تغییر می‌کند.</p>
+        </article>
+
+        <article class="card">
+          <h3>develop</h3>
+          <p>شاخه‌ی تجمیع تغییرات توسعه پیش از ورود به نسخه‌ی پایدار است.</p>
+        </article>
+
+        <article class="card">
+          <h3>featureها</h3>
+          <p>هر feature هدف مشخصی مانند نظریه Git، طراحی یا deployment دارد.</p>
+        </article>
+
+        <article class="card">
+          <h3>hotfix</h3>
+          <p>برای اصلاح سریع و کنترل‌شده‌ی یک مشکل مشخص استفاده می‌شود.</p>
+        </article>
+      </div>
     </section>
 
-    <section id="conflicts">
-        <h2>نمونه‌های رفع Conflict</h2>
+    <section id="commits" class="section">
+      <div class="section-heading">
+        <span class="section-number">۰۴</span>
+        <div>
+          <p class="section-kicker">تاریخچه</p>
+          <h2>نمونه‌ی Commitهای معنادار</h2>
+        </div>
+      </div>
 
-        <article>
-            <h3>Conflict اول</h3>
-                <p>
-                    این تعارض هنگام pull --rebase روی یک branch مشترک ایجاد شد.
-                    هر دو توسعه‌دهنده یک قسمت مشترک از index.html را تغییر داده بودند.
-                </p>
-        </article>
-
-        <article>
-            <h3>Conflict دوم</h3>
-                <p>
-                    این تعارض در فرآیند Pull Request رخ داد؛ ابتدا develop تغییر کرد
-                    و سپس branch ویژگی نیز همان بخش README.md را تغییر داده بود.
-                </p>
-        </article>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>شاخه</th>
+              <th>نوع</th>
+              <th>پیام</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>۱</td><td>main</td><td><code>chore</code></td><td>initialize static project</td></tr>
+            <tr><td>۲</td><td>develop</td><td><code>chore</code></td><td>add gitignore rules</td></tr>
+            <tr><td>۳</td><td>develop</td><td><code>docs</code></td><td>add assignment introduction</td></tr>
+            <tr><td>۴</td><td>feature/git-theory</td><td><code>feat</code></td><td>add git theory section</td></tr>
+            <tr><td>۵</td><td>feature/git-theory</td><td><code>docs</code></td><td>explain git directory</td></tr>
+            <tr><td>۶</td><td>feature/git-theory</td><td><code>docs</code></td><td>explain atomic changes</td></tr>
+            <tr><td>۷</td><td>feature/git-theory</td><td><code>docs</code></td><td>explain git synchronization commands</td></tr>
+            <tr><td>۸</td><td>feature/git-theory</td><td><code>docs</code></td><td>explain history integration commands</td></tr>
+            <tr><td>۹</td><td>feature/git-theory</td><td><code>docs</code></td><td>explain reset and revert</td></tr>
+            <tr><td>۱۰</td><td>feature/git-theory</td><td><code>docs</code></td><td>explain restore switch checkout</td></tr>
+            <tr><td>۱۱</td><td>feature/git-theory</td><td><code>docs</code></td><td>explain staging and stash</td></tr>
+            <tr><td>۱۲</td><td>feature/git-theory</td><td><code>docs</code></td><td>explain snapshots and commits</td></tr>
+            <tr><td>۱۳</td><td>feature/git-theory</td><td><code>docs</code></td><td>compare local and remote repositories</td></tr>
+            <tr><td>۱۴</td><td>feature/report-styling</td><td><code>feat</code></td><td>add Persian typography</td></tr>
+            <tr><td>۱۵</td><td>feature/report-styling</td><td><code>feat</code></td><td>add report cards</td></tr>
+            <tr><td>۱۶</td><td>feature/report-styling</td><td><code>feat</code></td><td>add responsive report layout</td></tr>
+            <tr><td>۱۷</td><td>feature/report-styling</td><td><code>feat</code></td><td>add commit history table</td></tr>
+            <tr><td>۱۸</td><td>feature/conflict-lab</td><td><code>docs</code></td><td>document rebase conflict</td></tr>
+            <tr><td>۱۹</td><td>feature/conflict-lab</td><td><code>docs</code></td><td>document pull request conflict</td></tr>
+            <tr><td>۲۰</td><td>hotfix/mobile-layout</td><td><code>fix</code></td><td>improve mobile layout</td></tr>
+            <tr><td>۲۱</td><td>feature/deployment</td><td><code>chore</code></td><td>add github pages workflow</td></tr>
+            <tr><td>۲۲</td><td>feature/deployment</td><td><code>docs</code></td><td>add deployment instructions</td></tr>
+            <tr><td>۲۳</td><td>develop</td><td><code>fix</code></td><td>improve semantic html</td></tr>
+            <tr><td>۲۴</td><td>main</td><td><code>docs</code></td><td>finalize laboratory report</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
-    <section id="git-theory">
-        <h2>پرسش‌های نظری Git</h2>
-        <article>
-            <h3>۱. پوشه .git چیست؟</h3>
+    <section id="conflicts" class="section">
+      <div class="section-heading">
+        <span class="section-number">۰۵</span>
+        <div>
+          <p class="section-kicker">Conflict Resolution</p>
+          <h2>دو سناریوی واقعی رفع تعارض</h2>
+        </div>
+      </div>
 
-            <p>
-                پوشه .git هسته repository محلی Git است و اطلاعات مربوط به
-                objectها، branchها، commitها، تنظیمات، logها و staging area
-                را نگهداری می‌کند.
-            </p>
-
-            <ul>
-                <li><strong>HEAD:</strong> مرجع فعلی</li>
-                <li><strong>objects:</strong> objectهای Git</li>
-                <li><strong>refs:</strong> branchها و tagها</li>
-                <li><strong>index:</strong> staging area</li>
-                <li><strong>config:</strong> تنظیمات repository</li>
-                <li><strong>logs:</strong> سوابق referenceها</li>
-            </ul>
+      <div class="report-grid">
+        <article class="card conflict-card">
+          <span class="status-chip">Conflict 01</span>
+          <h3>تعارض هنگام rebase</h3>
+          <p>
+            دو توسعه‌دهنده یک بخش مشترک از <code>index.html</code> را در
+            یک branch تغییر دادند. با <code>git pull --rebase</code>
+            تعارض ایجاد شد.
+          </p>
+          <pre><code>git status
+grep -n -E '&lt;&lt;&lt;&lt;&lt;&lt;&lt;|=======|&gt;&gt;&gt;&gt;&gt;&gt;&gt;' index.html
+git add index.html
+git rebase --continue</code></pre>
         </article>
-        <article>
-                <h3>Atomic Commit و Atomic Pull Request</h3>
 
-                <p>
-                    atomic یعنی تغییر از نظر منطقی یک واحد کامل و قابل فهم باشد.
-                    در یک atomic commit نباید چند تغییر مستقل و بی‌ارتباط کنار هم قرار گیرند.
-                </p>
-
-                <p>
-                    یک atomic pull request نیز باید یک هدف روشن داشته باشد؛
-                    برای مثال «افزودن بخش پاسخ پرسش‌های Git» بهتر از PRای است که
-                    هم‌زمان CSS، workflow و محتوای نامرتبط را تغییر دهد.
-                </p>
+        <article class="card conflict-card">
+          <span class="status-chip">Conflict 02</span>
+          <h3>تعارض در Pull Request</h3>
+          <p>
+            branch مربوط به deployment پس از تغییر <code>develop</code>
+            دیگر قابل merge مستقیم نبود. وضعیت جدید branch دریافت و
+            conflict در <code>README.md</code> به‌صورت دستی حل شد.
+          </p>
+          <pre><code>git fetch origin
+git merge origin/develop
+git status
+git add README.md
+git commit -m "fix: resolve deployment documentation conflict"</code></pre>
         </article>
-        <article>
-            <h3>fetch، pull و merge</h3>
+      </div>
+    </section>
 
-            <p>
-                <code>git fetch</code> تغییرات remote را دریافت می‌کند ولی branch فعلی
-                را مستقیماً ادغام نمی‌کند.
-            </p>
+    <section id="deployment" class="section">
+      <div class="section-heading">
+        <span class="section-number">۰۶</span>
+        <div>
+          <p class="section-kicker">CI/CD</p>
+          <h2>استقرار خودکار</h2>
+        </div>
+      </div>
 
-            <p>
-                <code>git pull</code> معمولاً fetch و سپس merge یا rebase است.
-            </p>
+      <div class="deployment-box">
+        <div>
+          <h3>GitHub Actions</h3>
+          <p>
+            با هر push به <code>main</code>، workflow موجود در
+            <code>.github/workflows/deploy.yml</code> اجرا می‌شود،
+            فایل‌های استاتیک را به artifact تبدیل می‌کند و سپس آن‌ها
+            را روی GitHub Pages منتشر می‌کند.
+          </p>
+        </div>
 
-            <p>
-                <code>git merge</code> دو تاریخچه را ادغام می‌کند.
-            </p>
-        </article>
-        <article>
-            <h3>rebase و cherry-pick</h3>
+        <a class="button" href="https://github.com/" target="_blank" rel="noopener">
+          مشاهده GitHub
+        </a>
+      </div>
 
-            <p>
-                <code>git rebase</code> commitهای یک branch را روی یک پایه جدید بازنویسی می‌کند.
-            </p>
+      <div class="url-placeholder">
+        <span>آدرس نهایی GitHub Pages</span>
+        <code>https://USERNAME.github.io/REPOSITORY/</code>
+      </div>
+    </section>
 
-            <p>
-                <code>git cherry-pick</code> یک commit مشخص را روی branch فعلی اعمال می‌کند.
-            </p>
-        </article>
-        <article>
-            <h3>reset و revert</h3>
+    <section id="questions" class="section">
+      <div class="section-heading">
+        <span class="section-number">۰۷</span>
+        <div>
+          <p class="section-kicker">پرسش‌های نظری</p>
+          <h2>پاسخ ۷ پرسش اصلی Git</h2>
+        </div>
+      </div>
 
-            <p>
-                <code>git reset</code> می‌تواند pointer شاخه و وضعیت index/worktree را تغییر دهد.
-            </p>
+      <div class="qa-list">
+        <details open>
+          <summary>۱. پوشه‌ی <code>.git</code> چیست؟</summary>
+          <p>
+            پوشه‌ی <code>.git</code> هسته‌ی repository محلی Git است. این
+            پوشه با <code>git init</code> ایجاد می‌شود و metadata، objectها،
+            referenceها، تنظیمات، logها و index را نگه می‌دارد. فایل
+            <code>HEAD</code> مرجع فعلی را مشخص می‌کند، پوشه‌ی
+            <code>objects</code> آبجکت‌هایی مانند commit، tree و blob را
+            نگه می‌دارد، <code>refs</code> برای branchها و tagها استفاده
+            می‌شود و <code>index</code> همان staging area است.
+          </p>
+        </details>
 
-            <p>
-                <code>git revert</code> با ایجاد یک commit معکوس، اثر commit قبلی را خنثی می‌کند
-                و برای branchهای اشتراکی معمولاً انتخاب امن‌تری است.
-            </p>
-        </article>
-        <article>
-            <h3>restore، switch و checkout</h3>
+        <details>
+          <summary>۲. Atomic در commit و Pull Request یعنی چه؟</summary>
+          <p>
+            یک تغییر atomic یک واحد منطقی و کامل است. یک atomic commit باید
+            یک هدف روشن داشته باشد و ترجیحاً فقط یک تغییر مستقل را ثبت کند.
+            Pull Request نیز بهتر است یک هدف مشخص داشته باشد تا review،
+            تست، rollback و نگهداری آن ساده باشد.
+          </p>
+        </details>
 
-            <p>
-                <code>git restore</code> برای بازیابی فایل‌ها و وضعیت index/worktree کاربرد دارد.
-            </p>
+        <details>
+          <summary>۳. تفاوت fetch، pull، merge، rebase و cherry-pick چیست؟</summary>
+          <p>
+            <code>git fetch</code> اطلاعات remote را دریافت می‌کند ولی branch
+            فعلی را ادغام نمی‌کند. <code>git pull</code> معمولاً fetch و
+            سپس merge یا rebase است. <code>git merge</code> دو تاریخچه را
+            ادغام می‌کند. <code>git rebase</code> commitها را روی پایه‌ای
+            جدید بازنویسی می‌کند. <code>git cherry-pick</code> یک commit
+            مشخص را انتخاب و روی branch فعلی اعمال می‌کند.
+          </p>
+        </details>
 
-            <p>
-                <code>git switch</code> برای جابه‌جایی بین branchها طراحی شده است.
-            </p>
+        <details>
+          <summary>۴. تفاوت reset، revert، restore، switch و checkout چیست؟</summary>
+          <p>
+            <code>reset</code> می‌تواند reference و در حالت‌های مختلف index
+            و working tree را جابه‌جا کند. <code>revert</code> یک commit
+            جدید برای خنثی‌کردن اثر commit قبلی می‌سازد. <code>restore</code>
+            برای بازیابی فایل‌ها و index طراحی شده است. <code>switch</code>
+            برای جابه‌جایی branchهاست. <code>checkout</code> دستور قدیمی‌تر
+            و چندمنظوره‌ای است که هم branch و هم restore فایل‌ها را پوشش می‌داد.
+          </p>
+        </details>
 
-            <p>
-                <code>git checkout</code> دستور قدیمی‌تر و چندمنظوره‌ای است که هم برای
-                branch و هم برای restore فایل استفاده می‌شد.
-            </p>
-        </article>
-        <article>
-                        
-            <h3>Stage و Stash</h3>
+        <details>
+          <summary>۵. Stage یا Index چیست و stash چه کاری می‌کند؟</summary>
+          <p>
+            staging area یا index ناحیه‌ای بین working tree و repository
+            است. با <code>git add</code> فایل‌ها را برای commit بعدی انتخاب
+            می‌کنیم. <code>git stash</code> تغییرات محلی را موقتاً کنار
+            می‌گذارد تا working tree تمیز شود و بتوان بدون commit دائمی
+            branch یا context را عوض کرد.
+          </p>
+        </details>
 
-            <p>
-                staging area یا index ناحیه‌ای بین working tree و commit است.
-                فایل را با <code>git add</code> وارد این ناحیه می‌کنیم.
-            </p>
+        <details>
+          <summary>۶. Snapshot چیست و چه ارتباطی با commit دارد؟</summary>
+          <p>
+            snapshot نمایی از وضعیت پروژه در یک نقطه از تاریخچه است.
+            commit به یک snapshot مشخص اشاره می‌کند و همراه آن parent،
+            author، committer، زمان و پیام commit نیز ثبت می‌شود. Git برای
+            ذخیره‌ی این ساختار از object model خود استفاده می‌کند و داده‌های
+            تکراری را تا حد امکان به شکل مشترک نگه می‌دارد.
+          </p>
+        </details>
 
-            <p>
-                <code>git stash</code> تغییرات موقت working tree و index را ذخیره می‌کند
-                تا بتوانیم موقتاً branch یا context کاری را عوض کنیم.
-            </p>
-        </article>
-        <article>
-                        
-            <h3>Snapshot و Commit</h3>
-
-            <p>
-                Git به‌جای ذخیره صرفاً یک diff خط‌به‌خط، نمایی از وضعیت فایل‌ها را
-                به‌صورت snapshot مدل می‌کند.
-            </p>
-
-            <p>
-                یک commit به یک snapshot مشخص اشاره می‌کند و همچنین parent،
-                author، committer، message و metadata مرتبط را دارد.
-            </p>
-        </article>
-        <article>
-                        
-            <h3>Local Repository و Remote Repository</h3>
-
-            <p>
-                local repository روی سیستم توسعه‌دهنده قرار دارد و شامل working tree،
-                index و history محلی است.
-            </p>
-
-            <p>
-                remote repository نسخه‌ای اشتراکی از repository روی سرویس‌هایی مانند
-                GitHub است که برای collaboration، backup و integration استفاده می‌شود.
-            </p>
-        </article>
+        <details>
+          <summary>۷. تفاوت local repository و remote repository چیست؟</summary>
+          <p>
+            local repository روی سیستم توسعه‌دهنده قرار دارد و working tree،
+            index و history محلی را در بر می‌گیرد. remote repository روی
+            سرویسی مانند GitHub قرار دارد و برای همکاری، code review،
+            backup و CI/CD استفاده می‌شود. این دو repository مستقل‌اند و
+            با فرمان‌هایی مانند <code>push</code>، <code>fetch</code> و
+            <code>pull</code> با هم همگام می‌شوند.
+          </p>
+        </details>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <p>آزمایش Git، GitHub و GitHub Actions</p>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>گزارش آزمایش Git و GitHub — frontend ایستا با پشتیبانی RTL</p>
+      <span id="year"></span>
     </div>
   </footer>
 
