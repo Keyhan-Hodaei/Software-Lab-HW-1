@@ -42,6 +42,139 @@
             نقش گزارش آزمایش را نیز ایفا می‌کند.
         </p>
     </section>
+
+    <section id="git-theory">
+        <h2>پرسش‌های نظری Git</h2>
+        <article>
+            <h3>۱. پوشه .git چیست؟</h3>
+
+            <p>
+                پوشه .git هسته repository محلی Git است و اطلاعات مربوط به
+                objectها، branchها، commitها، تنظیمات، logها و staging area
+                را نگهداری می‌کند.
+            </p>
+
+            <ul>
+                <li><strong>HEAD:</strong> مرجع فعلی</li>
+                <li><strong>objects:</strong> objectهای Git</li>
+                <li><strong>refs:</strong> branchها و tagها</li>
+                <li><strong>index:</strong> staging area</li>
+                <li><strong>config:</strong> تنظیمات repository</li>
+                <li><strong>logs:</strong> سوابق referenceها</li>
+            </ul>
+        </article>
+        <article>
+                <h3>Atomic Commit و Atomic Pull Request</h3>
+
+                <p>
+                    atomic یعنی تغییر از نظر منطقی یک واحد کامل و قابل فهم باشد.
+                    در یک atomic commit نباید چند تغییر مستقل و بی‌ارتباط کنار هم قرار گیرند.
+                </p>
+
+                <p>
+                    یک atomic pull request نیز باید یک هدف روشن داشته باشد؛
+                    برای مثال «افزودن بخش پاسخ پرسش‌های Git» بهتر از PRای است که
+                    هم‌زمان CSS، workflow و محتوای نامرتبط را تغییر دهد.
+                </p>
+        </article>
+        <article>
+            <h3>fetch، pull و merge</h3>
+
+            <p>
+                <code>git fetch</code> تغییرات remote را دریافت می‌کند ولی branch فعلی
+                را مستقیماً ادغام نمی‌کند.
+            </p>
+
+            <p>
+                <code>git pull</code> معمولاً fetch و سپس merge یا rebase است.
+            </p>
+
+            <p>
+                <code>git merge</code> دو تاریخچه را ادغام می‌کند.
+            </p>
+        </article>
+        <article>
+            <h3>rebase و cherry-pick</h3>
+
+            <p>
+                <code>git rebase</code> commitهای یک branch را روی یک پایه جدید بازنویسی می‌کند.
+            </p>
+
+            <p>
+                <code>git cherry-pick</code> یک commit مشخص را روی branch فعلی اعمال می‌کند.
+            </p>
+        </article>
+        <article>
+            <h3>reset و revert</h3>
+
+            <p>
+                <code>git reset</code> می‌تواند pointer شاخه و وضعیت index/worktree را تغییر دهد.
+            </p>
+
+            <p>
+                <code>git revert</code> با ایجاد یک commit معکوس، اثر commit قبلی را خنثی می‌کند
+                و برای branchهای اشتراکی معمولاً انتخاب امن‌تری است.
+            </p>
+        </article>
+        <article>
+            <h3>restore، switch و checkout</h3>
+
+            <p>
+                <code>git restore</code> برای بازیابی فایل‌ها و وضعیت index/worktree کاربرد دارد.
+            </p>
+
+            <p>
+                <code>git switch</code> برای جابه‌جایی بین branchها طراحی شده است.
+            </p>
+
+            <p>
+                <code>git checkout</code> دستور قدیمی‌تر و چندمنظوره‌ای است که هم برای
+                branch و هم برای restore فایل استفاده می‌شد.
+            </p>
+        </article>
+        <article>
+                        
+            <h3>Stage و Stash</h3>
+
+            <p>
+                staging area یا index ناحیه‌ای بین working tree و commit است.
+                فایل را با <code>git add</code> وارد این ناحیه می‌کنیم.
+            </p>
+
+            <p>
+                <code>git stash</code> تغییرات موقت working tree و index را ذخیره می‌کند
+                تا بتوانیم موقتاً branch یا context کاری را عوض کنیم.
+            </p>
+        </article>
+        <article>
+                        
+            <h3>Snapshot و Commit</h3>
+
+            <p>
+                Git به‌جای ذخیره صرفاً یک diff خط‌به‌خط، نمایی از وضعیت فایل‌ها را
+                به‌صورت snapshot مدل می‌کند.
+            </p>
+
+            <p>
+                یک commit به یک snapshot مشخص اشاره می‌کند و همچنین parent،
+                author، committer، message و metadata مرتبط را دارد.
+            </p>
+        </article>
+        <article>
+                        
+            <h3>Local Repository و Remote Repository</h3>
+
+            <p>
+                local repository روی سیستم توسعه‌دهنده قرار دارد و شامل working tree،
+                index و history محلی است.
+            </p>
+
+            <p>
+                remote repository نسخه‌ای اشتراکی از repository روی سرویس‌هایی مانند
+                GitHub است که برای collaboration، backup و integration استفاده می‌شود.
+            </p>
+        </article>
+    </section>
   </main>
 
   <footer>
