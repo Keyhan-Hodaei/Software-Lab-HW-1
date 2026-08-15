@@ -1,24 +1,78 @@
 # گزارش آزمایش Git، GitHub و GitHub Pages
 
+## اطلاعات پروژه
+
+| عنوان | مقدار |
+|---|---|
+| نام پروژه | Software-Lab-HW-1 |
+| نوع پروژه | Frontend ایستا |
+| فناوری‌ها | HTML5، CSS3، JavaScript |
+| کنترل نسخه | Git |
+| مخزن | https://github.com/Keyhan-Hodaei/Software-Lab-HW-1 |
+| استقرار | GitHub Pages با GitHub Actions |
+| اعضای تیم | سید کیهان هدایی — 401106696 |
+| اعضای تیم | یاشار پیمایی — 401100325 |
+
+---
+
 ## ۱. معرفی پروژه
 
-این پروژه یک frontend ایستا با HTML5، CSS3 و JavaScript خام است که هم‌زمان به‌عنوان گزارش آزمایش Git و GitHub عمل می‌کند.
+این پروژه یک نرم‌افزار **Static Frontend** است که با استفاده از HTML5، CSS3 و JavaScript خام پیاده‌سازی شده است.
 
-اهداف اصلی:
+نکته اصلی پروژه این است که صفحه وب علاوه بر نقش frontend، خودِ گزارش آزمایش Git و GitHub نیز محسوب می‌شود. بنابراین فرآیند توسعه، ساختار branchها، تاریخچه commitها، سناریوهای رفع conflict، مفاهیم نظری Git و فرآیند CI/CD در همان سایت مستند شده‌اند.
 
-- تمرین repository و `.git`
-- ساخت commitهای معنادار با Conventional Commits
-- کار با چند branch
-- شبیه‌سازی چند contributor
-- ایجاد و رفع حداقل دو conflict
-- استفاده از Pull Request
-- محافظت از `main`
-- استقرار خودکار روی GitHub Pages با GitHub Actions
+پروژه کاملاً فارسی و راست‌به‌چپ طراحی شده و از:
 
-## ۲. ساختار فایل‌ها
+```html
+<html lang="fa" dir="rtl">
+```
+
+استفاده می‌کند.
+
+برای typography فارسی نیز از فونت Vazirmatn استفاده شده است.
+
+---
+
+# ۲. اعضای تیم
+
+### سید کیهان هدایی
+شماره دانشجویی:
 
 ```text
-git-github-lab/
+401106696
+```
+
+### یاشار پیمایی
+شماره دانشجویی:
+
+```text
+401100325
+```
+
+در فرآیند توسعه، برای شبیه‌سازی مشارکت چند توسعه‌دهنده از تنظیمات مختلف `git config user.name` و `git config user.email` استفاده شده است.
+
+نمونه:
+
+```bash
+git config user.name "سید کیهان هدایی"
+git config user.email "niyahodai@gmail.com"
+```
+
+و برای contributor دوم:
+
+```bash
+git config user.name "یاشار پیمایی"
+git config user.email "yasharp1383@gmail.com"
+```
+
+در استفاده واقعی از GitHub، بهتر است هر commit با حساب و email مربوط به contributor واقعی ثبت شود.
+
+---
+
+# ۳. ساختار پروژه
+
+```text
+Software-Lab-HW-1/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml
@@ -30,142 +84,323 @@ git-github-lab/
 └── README.md
 ```
 
-## ۳. اجرای محلی
+### `index.html`
 
-```bash
-git init
-git switch -c main
-python3 -m http.server 8000
-```
+صفحه اصلی پروژه و گزارش آزمایش است.
 
-سپس در مرورگر:
+### `assets/style.css`
 
-```text
-http://localhost:8000
-```
+مسئول ظاهر، RTL، typography، responsive layout، کارت‌ها، جدول‌ها و سایر اجزای رابط است.
 
-## ۴. ساختار branchها
+### `assets/script.js`
 
-- `main`: نسخه‌ی پایدار و قابل انتشار؛ فقط از طریق Pull Request.
-- `develop`: شاخه‌ی تجمیع توسعه.
-- `feature/git-theory`: بخش نظریه Git.
-- `feature/report-styling`: ظاهر، RTL و typography.
-- `feature/conflict-lab`: سناریوهای conflict.
-- `feature/deployment`: GitHub Actions و Pages.
-- `hotfix/mobile-layout`: اصلاح مشکلات نمایش موبایل.
+شامل JavaScript ساده پروژه است؛ از جمله نمایش سال جاری و رفتار navigation.
 
-نمودار پیشنهادی:
+### `.gitignore`
+
+فایل‌های موقت، تنظیمات editor، خروجی build، فایل‌های محیطی و سایر موارد غیرضروری را از repository خارج می‌کند.
+
+### `.github/workflows/deploy.yml`
+
+فرآیند استقرار خودکار روی GitHub Pages را تعریف می‌کند.
+
+---
+
+# ۴. فناوری‌های استفاده‌شده
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- Git
+- GitHub
+- GitHub Actions
+- GitHub Pages
+- فونت فارسی Vazirmatn
+
+پروژه build پیچیده‌ای ندارد و به‌صورت static قابل اجراست.
+
+---
+
+# ۵. Branching Strategy
+
+برای مدیریت توسعه از شاخه‌های معنادار استفاده شده است.
+
+## `main`
+
+شاخه اصلی و پایدار پروژه است و تغییرات آن باید از طریق Pull Request وارد شوند.
+
+## `develop`
+
+شاخه اصلی توسعه و محل تجمیع تغییرات featureها است.
+
+## `feature/git-theory`
+
+برای توسعه بخش مفاهیم نظری Git و پاسخ به هفت پرسش اصلی آزمایش استفاده شده است.
+
+## `feature/report-styling`
+
+برای توسعه ظاهر گزارش، typography فارسی، کارت‌ها، جدول و responsive layout استفاده شده است.
+
+## `feature/conflict-lab`
+
+برای مستندسازی و نمایش سناریوهای Merge Conflict استفاده شده است.
+
+## `feature/deployment`
+
+برای GitHub Actions و GitHub Pages استفاده شده است.
+
+## `hotfix/mobile-layout`
+
+برای اصلاح مشکلات مربوط به نمایش پروژه روی صفحه‌های کوچک استفاده شده است.
+
+---
+
+# ۶. نمودار کلی Branchها
 
 ```text
 main
   │
   └── develop
+       │
        ├── feature/git-theory
+       │
        ├── feature/report-styling
+       │
        ├── feature/conflict-lab
+       │
        ├── feature/deployment
+       │
        └── hotfix/mobile-layout
 ```
 
-## ۵. استراتژی commit
-
-حداقل ۲۰ commit معنادار باید در تاریخچه‌ی واقعی پروژه ایجاد شود. نمونه‌ی roadmap:
+فرآیند کلی توسعه:
 
 ```text
-1.  chore: initialize static project
-2.  chore: add gitignore rules
-3.  docs: add assignment introduction
-4.  feat: add git theory section
-5.  docs: explain git directory
-6.  docs: explain atomic changes
-7.  docs: explain git synchronization commands
-8.  docs: explain history integration commands
-9.  docs: explain reset and revert
-10. docs: explain restore switch checkout
-11. docs: explain staging and stash
-12. docs: explain snapshots and commits
-13. docs: compare local and remote repositories
-14. feat: add Persian typography
-15. feat: add report cards
-16. feat: add responsive report layout
-17. feat: add commit history table
-18. docs: document rebase conflict
-19. docs: document pull request conflict
-20. fix: improve mobile layout
-21. chore: add github pages workflow
-22. docs: add deployment instructions
-23. fix: improve semantic html
-24. docs: finalize laboratory report
+Feature Branch
+      │
+      ▼
+Pull Request
+      │
+      ▼
+develop
+      │
+      ▼
+Pull Request
+      │
+      ▼
+main
+      │
+      ▼
+GitHub Actions
+      │
+      ▼
+GitHub Pages
 ```
 
-## ۶. شبیه‌سازی چند contributor
+---
+
+# ۷. تعداد و ساختار Commitها
+
+در زمان تهیه این گزارش، صفحه repository در GitHub تعداد **۲۶ commit** را برای تاریخچه فعلی نشان می‌دهد؛ بنابراین شرط حداقل ۲۰ commit معنادار تأمین شده است.
+
+تاریخچه پروژه از commitهای نوع Conventional Commits استفاده می‌کند، از جمله:
+
+```text
+feat:
+docs:
+fix:
+chore:
+```
+
+نمونه‌ای از commitهای اصلی پروژه:
+
+```text
+chore: initialize static project
+chore: add gitignore rules
+docs: add assignment introduction
+feat: add git theory section
+docs: explain git directory
+docs: explain atomic changes
+docs: explain git synchronization commands
+docs: explain history integration commands
+docs: explain reset and revert
+docs: explain restore switch checkout
+docs: explain staging and stash
+docs: explain snapshots and commits
+docs: compare local and remote repositories
+feat: add Persian typography
+feat: add report cards
+feat: add responsive report layout
+feat: add commit history table
+docs: document rebase conflict
+docs: document pull request conflict
+fix: improve mobile layout
+chore: add github pages workflow
+docs: add deployment instructions
+fix: improve semantic html
+docs: finalize laboratory report
+```
+
+برای بررسی تاریخچه واقعی repository:
+
+```bash
+git log --oneline --graph --decorate --all
+```
+
+و برای شمارش commitها:
+
+```bash
+git rev-list --count main
+```
+
+---
+
+# ۸. فایل `.gitignore`
+
+در پروژه از `.gitignore` استفاده شده است.
+
+نمونه مواردی که نادیده گرفته می‌شوند:
+
+```gitignore
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.tmp
+*.bak
+*.swp
+*.log
+dist/
+build/
+.env
+.env.*
+coverage/
+```
+
+این کار باعث می‌شود فایل‌های موقت، تنظیمات محیط توسعه و خروجی‌های غیرضروری وارد repository نشوند.
+
+---
+
+# ۹. شبیه‌سازی چند Contributor
+
+برای نمایش مفهوم همکاری چندنفره، می‌توان هویت Git را برای contributorهای مختلف تنظیم کرد.
 
 Contributor اول:
 
 ```bash
-git config user.name "توسعه‌دهنده اول"
-git config user.email "developer1@example.com"
+git config user.name "سید کیهان هدایی"
+git config user.email "YOUR_EMAIL"
 ```
 
 Contributor دوم:
 
 ```bash
-git config user.name "توسعه‌دهنده دوم"
-git config user.email "developer2@example.com"
+git config user.name "یاشار پیمایی"
+git config user.email "YOUR_EMAIL"
 ```
 
-در یک پروژه‌ی واقعی بهتر است هر contributor با هویت GitHub واقعی خودش commit کند.
+و برای مشاهده:
 
-## ۷. Conflict اول: rebase
+```bash
+git config user.name
+git config user.email
+```
 
-سناریو: دو توسعه‌دهنده یک بخش مشترک از `index.html` را در یک branch تغییر می‌دهند.
+استفاده می‌شود.
 
-در توسعه‌دهنده‌ای که commit محلی دارد:
+در همکاری واقعی GitHub، بهتر است contributorها با حساب‌ها و هویت واقعی خود commit و Pull Request ایجاد کنند.
+
+---
+
+# ۱۰. Conflict اول — Rebase Conflict
+
+در سناریوی اول، دو توسعه‌دهنده یک قسمت مشترک از `index.html` را در یک branch تغییر داده‌اند.
+
+هنگام دریافت تغییرات remote و اجرای rebase:
 
 ```bash
 git pull --rebase origin feature/report-styling
 ```
 
-سپس:
+تعارض ایجاد می‌شود.
+
+وضعیت با:
 
 ```bash
 git status
+```
+
+بررسی می‌شود.
+
+سپس conflict markerها:
+
+```bash
 grep -n -E '<<<<<<<|=======|>>>>>>>' index.html
 ```
 
-پس از اصلاح فایل:
+بررسی می‌شوند.
+
+نمونه ساختار marker:
+
+```text
+<<<<<<< HEAD
+نسخه اول
+=======
+نسخه دوم
+>>>>>>> commit
+```
+
+پس از بررسی و انتخاب نسخه نهایی:
 
 ```bash
 git add index.html
 git rebase --continue
 ```
 
-در صورت نیاز به push تاریخچه‌ی بازنویسی‌شده:
+و در صورت نیاز:
 
 ```bash
 git push --force-with-lease origin feature/report-styling
 ```
 
-## ۸. Conflict دوم: Pull Request
+استفاده می‌شود.
 
-سناریو: `feature/deployment` پس از تغییر `develop` قابل merge نیست.
+### دلیل اهمیت این conflict
 
-محلی:
+این سناریو نشان می‌دهد که rebase در صورت برخورد با تغییرات هم‌زمان می‌تواند نیازمند حل دستی تعارض باشد و پس از حل آن باید فرآیند rebase ادامه داده شود.
+
+---
+
+# ۱۱. Conflict دوم — Pull Request Conflict
+
+در سناریوی دوم، branch مربوط به deployment هم‌زمان با `develop` روی یک بخش مشترک از `README.md` تغییر داده است.
+
+ابتدا وضعیت remote دریافت می‌شود:
 
 ```bash
 git fetch origin
+```
+
+سپس branch مورد نظر:
+
+```bash
 git switch feature/deployment
+```
+
+و تغییرات `develop` ادغام می‌شوند:
+
+```bash
 git merge origin/develop
 ```
 
-بررسی:
+در صورت conflict:
 
 ```bash
 git status
 grep -n -E '<<<<<<<|=======|>>>>>>>' README.md
 ```
 
-رفع دستی سپس:
+پس از رفع دستی:
 
 ```bash
 git add README.md
@@ -173,116 +408,130 @@ git commit -m "fix: resolve deployment documentation conflict"
 git push origin feature/deployment
 ```
 
-## ۹. محافظت از main
-
-در GitHub:
-
-```text
-Settings
-→ Rules / Branches
-→ Branch protection rules یا Rulesets
-```
-
-برای `main`:
-
-- الزام Pull Request
-- حداقل یک approval در صورت نیاز
-- الزام موفقیت status checkها در صورت فعال‌بودن CI
-- جلوگیری از force push
-- جلوگیری از حذف branch
-- در صورت نیاز جلوگیری از bypass قوانین
-
-هدف: هیچ push مستقیم به `main` انجام نشود و تغییرات فقط از مسیر Pull Request وارد شوند.
-
-## ۱۰. GitHub Pages
-
-در GitHub:
-
-```text
-Settings
-→ Pages
-→ Build and deployment
-→ Source: GitHub Actions
-```
-
-workflow پروژه در:
-
-```text
-.github/workflows/deploy.yml
-```
-
-قرار دارد.
-
-با هر push به `main` workflow اجرا می‌شود.
-
-## ۱۱. آدرس نهایی GitHub Pages
-
-پس از ساخت repository:
-
-```text
-https://USERNAME.github.io/REPOSITORY/
-```
-
-مثلاً:
-
-```text
-https://USERNAME.github.io/git-github-lab/
-```
+پس از آن Pull Request دوباره قابل بررسی و merge خواهد بود.
 
 ---
 
-# پرسش‌های نظری
+# ۱۲. Atomic Commit و Atomic Pull Request
 
-## پرسش ۱: `.git` چیست؟
+Atomic به معنای آن است که یک تغییر منطقی به‌صورت یک واحد مشخص و منسجم ارائه شود.
 
-`.git` هسته‌ی repository محلی Git است و با دستور زیر ساخته می‌شود:
-
-```bash
-git init
-```
-
-اجزای مهم:
-
-- `HEAD`: مرجع فعلی
-- `objects/`: objectهای Git مانند commit، tree و blob
-- `refs/`: branchها و tagها
-- `index`: staging area
-- `config`: تنظیمات repository
-- `logs/`: سوابق حرکت referenceها
-
-فایل‌های پروژه در working tree هستند، ولی metadata و object model اصلی Git در `.git` نگهداری می‌شود.
-
-## پرسش ۲: Atomic commit و Atomic Pull Request
-
-Atomic یعنی یک تغییر منطقی به‌صورت یک واحد کامل و مشخص ارائه شود.
-
-نمونه‌ی خوب:
+یک commit خوب:
 
 ```text
 feat: add git stash section
 ```
 
-بهتر است commitهای مستقل در یک commit ترکیب نشوند. Pull Request نیز بهتر است فقط یک هدف مشخص داشته باشد تا review، تست و rollback ساده شود.
+فقط روی یک هدف مشخص تمرکز دارد.
 
-## پرسش ۳: تفاوت fetch، pull، merge، rebase و cherry-pick
+در مقابل، commitی مانند:
 
-### fetch
+```text
+feat: update CSS, README, workflow and fix unrelated bug
+```
 
-اطلاعات remote را دریافت می‌کند، بدون اینکه branch فعلی را ادغام کند.
+چند تغییر مستقل را با یکدیگر ترکیب می‌کند و atomic نیست.
+
+### Atomic Commit
+
+ویژگی‌های اصلی:
+
+- هدف مشخص
+- تغییر منطقی و مستقل
+- قابل بررسی
+- قابل rollback یا revert
+- قابل توضیح با یک commit message روشن
+
+### Atomic Pull Request
+
+Pull Request نیز بهتر است یک هدف واحد داشته باشد.
+
+برای مثال:
+
+```text
+Add Git theory section
+```
+
+یک PR مناسب است، در حالی که PRای که هم‌زمان UI، workflow و چند باگ نامرتبط را تغییر دهد، atomic نیست.
+
+---
+
+# ۱۳. پرسش اول: `.git` چیست؟
+
+پوشه `.git` هسته repository محلی Git است.
+
+این پوشه با:
+
+```bash
+git init
+```
+
+ایجاد می‌شود.
+
+مهم‌ترین بخش‌های آن:
+
+### `HEAD`
+
+مرجع فعلی repository را مشخص می‌کند.
+
+### `objects/`
+
+objectهای Git مانند blob، tree، commit و tag را نگهداری می‌کند.
+
+### `refs/`
+
+referenceهایی مانند branchها و tagها در این بخش نگهداری می‌شوند.
+
+### `index`
+
+همان staging area است.
+
+### `config`
+
+تنظیمات repository محلی را نگه می‌دارد.
+
+### `logs/`
+
+تغییرات و حرکت referenceها را ثبت می‌کند.
+
+بنابراین `.git` شامل metadata و object model اصلی Git است و برای مدیریت تاریخچه repository ضروری است.
+
+---
+
+# ۱۴. پرسش دوم: Atomic در Atomic Commit و Atomic Pull Request
+
+Atomic یعنی یک تغییر به‌عنوان یک واحد منطقی و کامل ارائه شود.
+
+یک Atomic Commit:
+
+- یک هدف مشخص دارد.
+- تغییرات نامرتبط را ترکیب نمی‌کند.
+- مستقل قابل بررسی است.
+- در صورت نیاز می‌تواند revert شود.
+
+یک Atomic Pull Request نیز یک هدف مشخص دارد و فرآیند code review، تست، merge و rollback را ساده‌تر می‌کند.
+
+---
+
+# ۱۵. پرسش سوم: تفاوت fetch، pull، merge، rebase و cherry-pick
+
+## `git fetch`
+
+اطلاعات جدید remote را دریافت می‌کند بدون اینکه branch فعلی را مستقیماً ادغام کند.
 
 ```bash
 git fetch origin
 ```
 
-### pull
+## `git pull`
 
-معمولاً fetch و سپس merge یا rebase است.
+معمولاً شامل fetch و سپس یک عملیات integration مانند merge یا rebase است.
 
 ```bash
 git pull origin develop
 ```
 
-### merge
+## `git merge`
 
 دو تاریخچه را ادغام می‌کند.
 
@@ -290,59 +539,77 @@ git pull origin develop
 git merge feature/example
 ```
 
-### rebase
+در بعضی شرایط یک merge commit ایجاد می‌شود.
 
-commitها را روی پایه‌ی جدید بازنویسی می‌کند.
+## `git rebase`
+
+commitهای یک branch را روی پایه‌ای جدید بازنویسی می‌کند.
 
 ```bash
 git rebase develop
 ```
 
-### cherry-pick
+مزیت آن می‌تواند ایجاد history خطی‌تر باشد، اما چون commitهای موجود بازنویسی می‌شوند، روی branchهای اشتراکی باید با احتیاط استفاده شود.
 
-فقط یک commit مشخص را روی branch فعلی اعمال می‌کند.
+## `git cherry-pick`
+
+یک commit مشخص را انتخاب کرده و اثر آن را روی branch فعلی اعمال می‌کند.
 
 ```bash
 git cherry-pick <commit>
 ```
 
-خلاصه:
+### خلاصه
 
 ```text
-fetch       = دریافت
-pull        = دریافت + integration
-merge       = ادغام تاریخچه
-rebase      = بازنویسی پایه‌ی تاریخچه
-cherry-pick = انتقال یک commit مشخص
+fetch        = دریافت اطلاعات remote
+pull         = دریافت + integration
+merge        = ادغام تاریخچه‌ها
+rebase       = بازنویسی پایه تاریخچه
+cherry-pick  = انتقال یک commit مشخص
 ```
 
-## پرسش ۴: تفاوت reset، revert، restore، switch و checkout
+---
 
-### reset
+# ۱۶. پرسش چهارم: تفاوت reset، revert، restore، switch و checkout
 
-می‌تواند branch pointer و در حالت‌های مختلف index و working tree را تغییر دهد.
+## `git reset`
+
+می‌تواند reference فعلی و در حالت‌های مختلف index و working tree را جابه‌جا کند.
 
 ```bash
 git reset HEAD~1
 ```
 
-### revert
+حالت‌های مهم:
 
-یک commit جدید برای معکوس‌کردن اثر commit قبلی ایجاد می‌کند.
+```bash
+git reset --soft HEAD~1
+git reset --mixed HEAD~1
+git reset --hard HEAD~1
+```
+
+`--hard` باید با احتیاط زیاد استفاده شود زیرا ممکن است تغییرات محلی را از بین ببرد.
+
+## `git revert`
+
+یک commit جدید می‌سازد که اثر commit قبلی را معکوس می‌کند.
 
 ```bash
 git revert <commit>
 ```
 
-### restore
+در branchهای اشتراکی معمولاً از reset امن‌تر است زیرا تاریخچه را بازنویسی نمی‌کند.
 
-برای بازیابی فایل‌ها یا index استفاده می‌شود.
+## `git restore`
+
+برای بازیابی فایل‌ها و index/working tree استفاده می‌شود.
 
 ```bash
 git restore index.html
 ```
 
-### switch
+## `git switch`
 
 برای جابه‌جایی branchها طراحی شده است.
 
@@ -350,47 +617,65 @@ git restore index.html
 git switch develop
 ```
 
-### checkout
+ساخت branch:
 
-دستور قدیمی‌تر و چندمنظوره است و هم برای branch و هم برای restore فایل‌ها استفاده می‌شد.
-
-```text
-reset   = تغییر reference/index/worktree
-revert  = commit معکوس
-restore = بازیابی فایل
-switch  = جابه‌جایی branch
-checkout = دستور قدیمی چندمنظوره
+```bash
+git switch -c feature/example
 ```
 
-## پرسش ۵: Stage یا Index و stash
+## `git checkout`
 
-Stage یا Index بین working tree و repository قرار دارد.
+دستور قدیمی‌تر و چندمنظوره‌ای است که هم برای branch و هم برای restore فایل‌ها استفاده می‌شد.
+
+### خلاصه
+
+```text
+reset     = تغییر reference/index/worktree
+revert    = ایجاد commit معکوس
+restore   = بازیابی فایل
+switch    = جابه‌جایی branch
+checkout  = دستور قدیمی چندمنظوره
+```
+
+---
+
+# ۱۷. پرسش پنجم: Stage یا Index و `git stash`
+
+Staging Area یا Index بین Working Tree و Repository قرار دارد.
 
 ```text
 Working Tree
-   │
-   │ git add
-   ▼
+     │
+     │ git add
+     ▼
 Staging Area
-   │
-   │ git commit
-   ▼
+     │
+     │ git commit
+     ▼
 Repository
 ```
 
-نمایش اختلاف working tree:
+برای اضافه‌کردن فایل:
+
+```bash
+git add index.html
+```
+
+برای دیدن تغییرات Working Tree:
 
 ```bash
 git diff
 ```
 
-نمایش اختلاف staged:
+برای دیدن تغییرات Staged:
 
 ```bash
 git diff --staged
 ```
 
-`git stash` تغییرات محلی را موقتاً کنار می‌گذارد:
+### `git stash`
+
+تغییرات محلی را به‌صورت موقت کنار می‌گذارد تا Working Tree تمیز شود.
 
 ```bash
 git stash
@@ -398,36 +683,50 @@ git stash list
 git stash pop
 ```
 
-`stash pop` تغییر را برمی‌گرداند و stash را معمولاً حذف می‌کند؛ `stash apply` آن را برمی‌گرداند ولی stash را نگه می‌دارد.
+برای برگرداندن stash بدون حذف آن:
 
-## پرسش ۶: Snapshot چیست؟
-
-Snapshot نمایی از وضعیت پروژه در یک نقطه‌ی مشخص از تاریخچه است.
-
-یک commit به یک snapshot مشخص اشاره می‌کند و همچنین parent، author، committer، زمان و message را در خود دارد.
-
-می‌توان ساختار مفهومی را چنین دید:
-
-```text
-Commit A → Snapshot A
-     │
-     ▼
-Commit B → Snapshot B
+```bash
+git stash apply
 ```
 
-Git این ساختار را با objectهای خود مانند commit، tree و blob مدیریت می‌کند.
+---
 
-## پرسش ۷: Local repository و Remote repository
+# ۱۸. پرسش ششم: Snapshot چیست؟
 
-### Local repository
+Snapshot نمایی از وضعیت پروژه در یک نقطه مشخص از تاریخچه است.
 
-روی سیستم توسعه‌دهنده قرار دارد و شامل working tree، index و history محلی است.
+یک commit به یک snapshot مشخص اشاره می‌کند و علاوه بر آن اطلاعاتی مانند parent commit، author، committer، timestamp و commit message را در خود دارد.
 
-### Remote repository
+به‌صورت مفهومی:
 
-روی سرویسی مانند GitHub قرار دارد و برای collaboration، code review، backup و CI/CD استفاده می‌شود.
+```text
+Commit A
+   │
+   ▼
+Snapshot A
+   │
+   ▼
+Commit B
+   │
+   ▼
+Snapshot B
+```
 
-همگام‌سازی با دستورهایی مانند:
+Git این ساختار را با objectهایی مانند commit، tree و blob مدیریت می‌کند.
+
+---
+
+# ۱۹. پرسش هفتم: Local Repository و Remote Repository
+
+## Local Repository
+
+روی سیستم توسعه‌دهنده قرار دارد و شامل Working Tree، Staging Area و Local History است.
+
+## Remote Repository
+
+روی سرویسی مانند GitHub قرار دارد و برای همکاری تیمی، Pull Request، Code Review، Backup و CI/CD استفاده می‌شود.
+
+ارتباط آن‌ها با دستورهایی مانند:
 
 ```bash
 git push
@@ -437,11 +736,122 @@ git pull
 
 انجام می‌شود.
 
-Local و remote دو repository مجزا هستند و الزاماً همیشه همگام نیستند.
+بنابراین Local و Remote دو repository مستقل هستند که می‌توانند با یکدیگر sync شوند.
 
 ---
 
-## ۱۲. دستورات کلیدی آزمایش
+# ۲۰. GitHub Actions و CI/CD
+
+فایل workflow:
+
+```text
+.github/workflows/deploy.yml
+```
+
+است.
+
+فرآیند deployment:
+
+```text
+Push to main
+     │
+     ▼
+GitHub Actions
+     │
+     ▼
+Checkout Repository
+     │
+     ▼
+Configure GitHub Pages
+     │
+     ▼
+Upload Pages Artifact
+     │
+     ▼
+Deploy
+     │
+     ▼
+GitHub Pages
+```
+
+Workflow با push به `main` فعال می‌شود.
+
+---
+
+# ۲۱. GitHub Pages
+
+آدرس repository:
+
+```text
+https://github.com/Keyhan-Hodaei/Software-Lab-HW-1
+```
+
+آدرس GitHub Pages مورد انتظار برای این repository:
+
+```text
+https://keyhan-hodaei.github.io/Software-Lab-HW-1/
+```
+
+در GitHub باید در بخش:
+
+```text
+Settings
+→ Pages
+→ Build and deployment
+```
+
+منبع deployment روی:
+
+```text
+GitHub Actions
+```
+
+قرار گیرد.
+
+---
+
+# ۲۲. محافظت از `main`
+
+هدف Branch Protection این است که push مستقیم به `main` مجاز نباشد.
+
+```text
+Direct Push
+    ✗
+
+Pull Request
+    ✓
+```
+
+قوانین پیشنهادی/اعمال‌شده برای این فرآیند:
+
+- Require a pull request before merging
+- Require approvals
+- Require status checks to pass
+- Block force pushes
+- Restrict deletion
+- در صورت نیاز Require conversation resolution
+
+فرآیند نهایی:
+
+```text
+feature branch
+      │
+      ▼
+Pull Request
+      │
+      ▼
+develop
+      │
+      ▼
+Pull Request
+      │
+      ▼
+main
+```
+
+---
+
+# ۲۳. دستورات کلیدی استفاده‌شده در آزمایش
 
 ```bash
 git init
@@ -465,26 +875,204 @@ git remote
 git push
 ```
 
-## ۱۳. بررسی نهایی
+---
+
+# ۲۴. بررسی نهایی پروژه
+
+برای بررسی وضعیت repository:
 
 ```bash
 git status
+```
+
+برای مشاهده branchها:
+
+```bash
 git branch -a
+```
+
+برای مشاهده remote:
+
+```bash
 git remote -v
+```
+
+برای مشاهده graph تاریخچه:
+
+```bash
 git log --oneline --graph --decorate --all
+```
+
+برای شمارش commitها:
+
+```bash
 git rev-list --count main
 ```
 
-تعداد commitها باید حداقل ۲۰ باشد.
-
-همچنین نباید conflict marker باقی مانده باشد:
+برای اطمینان از نبود conflict marker:
 
 ```bash
 grep -R -n -E '<<<<<<<|=======|>>>>>>>' .
 ```
 
-و اجرای workflow در GitHub Actions باید موفق باشد.
+نتیجه مطلوب:
 
-## ۱۴. نتیجه‌گیری
+- Working Tree تمیز باشد.
+- حداقل ۲۰ commit معنادار وجود داشته باشد.
+- حداقل ۳ branch معنادار وجود داشته باشد.
+- دو conflict واقعی ایجاد و رفع شده باشد.
+- `main` از طریق Pull Request مدیریت شود.
+- GitHub Actions با موفقیت اجرا شود.
+- سایت روی GitHub Pages در دسترس باشد.
 
-این پروژه یک نمونه‌ی کامل از frontend ایستا با RTL فارسی است که فرآیند توسعه‌ی Git را نیز به‌عنوان بخشی از خود محصول مستند می‌کند. مهم‌ترین خروجی‌های آزمایش عبارت‌اند از مدیریت نسخه، شاخه‌بندی، commitهای معنادار، Pull Request، رفع conflict، محافظت از `main` و deployment خودکار روی GitHub Pages.
+---
+
+# ۲۵. نتیجه‌گیری
+
+در این پروژه یک frontend ایستای فارسی و راست‌به‌چپ با استفاده از HTML، CSS و JavaScript پیاده‌سازی شد.
+
+در کنار توسعه frontend، مفاهیم اصلی Git نیز به‌صورت عملی استفاده شدند؛ از جمله:
+
+- Repository
+- Commit
+- Branch
+- Pull Request
+- Merge
+- Rebase
+- Merge Conflict
+- Staging Area
+- Stash
+- Reset
+- Revert
+- Restore
+- Switch
+- Checkout
+- Snapshot
+- Local Repository
+- Remote Repository
+- GitHub Actions
+- GitHub Pages
+
+به این ترتیب پروژه هم خروجی قابل مشاهده دارد و هم فرآیند کامل مدیریت نسخه و استقرار خودکار را نشان می‌دهد.
+
+---
+
+# ۲۶. استفاده از LLM در انجام آزمایش
+
+در انجام این آزمایش از **LLM با نام ChatGPT** به‌عنوان ابزار کمکی برای یادگیری، طراحی مراحل Git/GitHub، تولید نمونه کد و تهیه مستندات استفاده شده است.
+
+محتوای نهایی پروژه، تاریخچه واقعی Git، commitها، branchها، Pull Requestها، conflictها، تنظیمات GitHub و deployment توسط اعضای تیم اجرا و بررسی شده‌اند.
+
+## پرامپت استفاده‌شده
+
+```text
+Role & Objective:
+Act as a Senior DevOps Engineer and Git Instructor. Provide a comprehensive, step-by-step guide to complete a Git/GitHub laboratory assignment.
+
+The deliverable is a lightweight static web application (Pure HTML/CSS/JS or Vanilla + Tailwind CDN) whose web page content is the assignment report itself—growing incrementally commit-by-commit. The static web page must be fully written in Persian with proper RTL (right-to-left) layout and Persian typography. The repository must be deployed to GitHub Pages via GitHub Actions.
+
+---
+
+### Core Assignment Requirements & Constraints
+
+1. **Tech Stack & Localization:**
+   - Simple static frontend (HTML5/CSS3/JS, zero-build or minimal build for fast GitHub Pages deployment).
+   - **Language & Layout:** All UI text, report sections, and document content on the static web page must be in **Persian** (`dir="rtl"`, `lang="fa"`, Persian fonts/styling).
+2. **Repository & Branching Strategy:**
+   - At least 3 meaningful branches (e.g., `main`, `develop`, `feature/add-git-theory`, `feature/report-styling`, or `hotfix/...`).
+   - Branch protection rule on `main`: direct pushes forbidden; merges allowed exclusively via Pull Requests (PRs).
+   - Multi-contributor simulation: specify author configuration (`git config user.name`) where relevant.
+3. **Commit History:**
+   - Exactly/at least 20 distinct, meaningful commits following Conventional Commits format (`feat:`, `docs:`, `fix:`, `chore:`).
+   - Include a proper `.gitignore` file.
+4. **Merge Conflicts:**
+   - Demonstrate at least 2 realistic merge conflict scenarios (one within a shared branch/rebase, one during a PR merge).
+   - Show exact terminal commands to trigger, inspect (`git status`, conflict markers), resolve, and commit the resolution.
+5. **CI/CD & Deployment:**
+   - Provide a complete GitHub Actions workflow file (`.github/workflows/deploy.yml`) to automatically deploy the static site to GitHub Pages.
+6. **Documentation & Deliverables (`README.md`):
+   - Project overview, branch graph explanation, commit history summary, and live GitHub Pages URL placeholder.
+   - Comprehensive, technically rigorous answers to the following 7 Git questions:
+     1. What is the `.git` directory? What data does it store, and how is it initialized?
+     2. What does "atomic" mean in the context of atomic commits and atomic pull requests?
+     3. What are the differences between `git fetch`, `git pull`, `git merge`, `git rebase`, and `git cherry-pick`?
+     4. What are the differences between `git reset`, `git revert`, `git restore`, `git switch`, and `git checkout`?
+     5. What is the staging area (index), and what does `git stash` do?
+     6. What is the Git concept of a "snapshot," and how does it relate to a commit?
+     7. What are the core differences between a local repository and a remote repository?
+
+---
+
+### Required Output Structure
+
+Provide the guide broken down into the following distinct execution phases:
+
+1. **Phase 1: Local Setup & Initial Scaffolding**
+   - Terminal commands to initialize git, create `.gitignore`, configure branch names, and create the baseline RTL Persian `index.html` and `README.md`.
+2. **Phase 2: Step-by-Step Commit & Branch Roadmap (20+ Commits)**
+   - A sequential checklist/table listing Commit #, Branch, Exact Bash Commands, File Changes (with Persian HTML content snippets), and Commit Message.
+3. **Phase 3: Conflict Scenarios & Step-by-Step Resolutions**
+   - Exact simulation for Conflict 1 and Conflict 2 with terminal output, diff resolution, and merge completion.
+4. **Phase 4: GitHub Remote Setup, Branch Protection & CI/CD**
+   - GitHub UI configuration instructions for branch protection rules and GitHub Pages settings.
+   - Complete `.github/workflows/deploy.yml` file.
+5. **Phase 5: Final `README.md` & Theory Q&A**
+   - Complete, formatted Markdown text for `README.md` including all 7 question answers with clear technical depth.
+
+---
+
+### Original Assignment Text (Context & Reference)
+
+> **فرانت‌اند ایستا با قابلیت استقرار خودکار**
+>
+> یک نرم‌افزار static frontend را به‌صورت pure یا با چارچوبی دلخواه (مانند ReactJS یا Angular یا Vue)، پیاده‌سازی کنید و در فرآیند پیاده‌سازی آن از git استفاده کنید. با کمک Github Actions نیز این نرم‌افزار static خود را به‌صورت خودکار، روی Github Pages مستقر (deploy) کنید.
+>
+> از اهداف آزمایش این است که در فرآیند پیاده‌سازی نرم‌افزار، ترجیحاً از همه‌ی دستوراتی که در فیلم آموزشی بیان شده، استفاده کنید تا نسبت به آن‌ها آشنایی و تسلط پیدا کنید؛ از این رو توصیه می‌کنیم دستورات git را بدون کمک IDE و به صورت دستی در ترمینال وارد کنید تا از نزدیک اتفاقاتی را که می‌افتد، ببینید؛ در این حالت یادگیری بیشتری دارید.
+>
+> برای انجام آزمایش به نکات زیر توجه کنید:
+> - انتظار می‌رود که فرآیند ایجاد این نرم‌افزار، به صورت همزمان توسط همه‌ی اعضای تیم ایجاد، در یک مخزن کد (repository) در Github دنبال شود.
+> - در پروژه‌ی خود از فایل `.gitignore` استفاده کنید.
+> - نیاز است تا حداقل ۲۰ commit معنا‌دار در فرآیند پیاده‌سازی نرم‌افزار وجود داشته باشد. منظور از معناداری commit ها، این است که اتفاق مشخصی در فرآیند پیاده‌سازی رخ داده باشد.
+> - لازم است برای مدیریت بهتر فرآیند پیاده‌سازی نرم‌افزار، از حداقل سه شاخه‌ی معنا‌دار استفاده کنید. منظور از معناداری شاخه‌ها، نام‌گذاری مناسب شاخه و هم‌چنین، مرتبط‌بودن شاخه‌ها با فرآیند پیاده‌سازی نرم‌افزار است؛ برای مثال شاخه `dev` و یا `feature` هر کدام با غرض‌های متفاوتی ایجاد می‌شوند و یا `hotfix` برای برطرف‌کردن بعضی باگ‌های خاص در نرم‌افزار به‌کار می‌رود.
+> - حداقل دو conflict را در فرآیند پیاده‌سازی برطرف کنید. این conflict ها می‌تواند در یک شاخه یا هنگام ادغام دو شاخه رخ دهد.
+> - با اعمال محدودیت در مخزن خود در Github، شاخه‌ی `main` پروژه را محافظت کنید؛ به صورتی که تنها از طریق pull request امکان ادغام شاخه‌ای دیگر با شاخه‌ی `main` را داشته باشید.
+> - ضروری است شاخه‌ها را به درستی با شاخه‌ی `main` و یا دیگر شاخه‌های مرتبط ادغام (merge) کنید. این کار را از طریق pull request انجام دهید.
+> - برای استقرار مستمر می‌توانید از Github Actions و workflow های آماده استفاده کنید.
+> - گزارشی از جزئیات پیاده‌سازی مراحل فوق شامل توضیح در خصوص برنچ ها و همچنین کامیت ها و آدرس github page مربوطه برای لانچ فرانت را با فرمت markdown در فایل `README` پروژه بنویسید.
+> - *شایان ذکر است که ضبط فیلم برای این آزمایش ضروری بوده و جزئی از نمره خواهد بود. توضیحات و الزامات ضبط ویدئو، در بخش مربوطه آورده شده‌است.*
+>
+> **پرسش‌ها:**
+> علاوه بر گزارش آزمایش، پاسخ سوالات زیر را هم داخل فایل `README` بنویسید:
+> 1. پوشه‌ی `.git` چیست؟ چه اطلاعاتی در آن ذخیره می‌شود؟ با چه دستوری ساخته می‌شود؟
+> 2. منظور از atomic بودن در atomic commit و atomic pull-request چیست؟
+> 3. تفاوت دستورهای fetch و pull و merge و rebase و cherry-pick را بیان کنید.
+> 4. تفاوت دستورهای reset و revert و restore و switch و checkout را بیان کنید.
+> 5. منظور از stage یا همان index چیست؟ دستور stash چه کاری را انجام می‌دهد؟
+> 6. مفهوم snapshot به چه معناست؟ ارتباط آن با commit چیست؟
+> 7. تفاوت‌های local repository و remote repository
+```
+
+### Session Link : 
+
+```text
+https://chatgpt.com/share/6a807e7f-5c5c-83eb-b24f-383b4b697749
+```
+
+---
+
+# ۲۷. لینک‌های پروژه
+
+### Repository
+
+```text
+https://github.com/Keyhan-Hodaei/Software-Lab-HW-1
+```
+
+### GitHub Pages
+
+```text
+https://keyhan-hodaei.github.io/Software-Lab-HW-1/
+```
+
+---
+
